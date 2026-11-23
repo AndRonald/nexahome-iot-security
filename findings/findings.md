@@ -90,13 +90,13 @@ Cada achado segue a cadeia **Evidência → Fragilidade → Ameaça → Impacto 
 
 ## Relação com as referências
 
-| Achado | ETSI EN 303 645 | NIST IR 8259A | OWASP ISTG | MITRE EMB3D (ameaça) |
+| Achado | ETSI EN 303 645 | NIST IR 8259A | OWASP ISTG | MITRE EMB3D |
 |---|---|---|---|---|
-| F01, F07 | 5.6 — minimizar superfícies expostas (interfaces de debug) | Logical Access to Interfaces | Interfaces físicas / Firmware | Interface de debug/diagnóstico exposta |
-| F02 | 5.6 — minimizar superfícies expostas; 5.5 — comunicação segura | Logical Access to Interfaces | Interfaces de comunicação de dados | Serviço privilegiado sem autenticação |
-| F03 | 5.4 — armazenar parâmetros sensíveis com segurança (sem credenciais fixas no código) | Data Protection; Device Identification | Firmware | Credenciais embutidas no firmware |
-| F04 | 5.5 — comunicar com segurança | Data Protection; Logical Access to Interfaces | Comunicação de dados / rede | Comunicação sem confidencialidade/autenticação |
-| F05 | 5.3 — manter o software atualizado (atualização segura e autenticada) | Software Update | Firmware (mecanismo de atualização) | Atualização de firmware não autenticada |
-| F06 | 5.7 — garantir a integridade do software; 5.4 | Device Security; Data Protection | Interfaces físicas / Memória | Extração de firmware via interface de hardware |
+| F01, F07 | 5.6 — minimizar superfícies expostas (interfaces de debug) | Logical Access to Interfaces | Interfaces físicas / Firmware | **TID-115** Firmware/Data Extraction via Hardware Interface |
+| F02 | 5.6 — minimizar superfícies expostas; 5.5 — comunicação segura | Logical Access to Interfaces | Interfaces de comunicação de dados | **TID-310** Remotely Accessible Unauthenticated Services; **TID-406** Unauthorized Messages or Connections |
+| F03 | 5.4 — armazenar parâmetros sensíveis com segurança (sem credenciais fixas no código) | Data Protection; Device Identification | Firmware | **TID-328** Hardcoded Credentials |
+| F04 | 5.5 — comunicar com segurança | Data Protection; Logical Access to Interfaces | Comunicação de dados / rede | **TID-408** Unencrypted Sensitive Data Communication; **TID-406** Unauthorized Messages or Connections |
+| F05 | 5.3 — manter o software atualizado (atualização segura e autenticada) | Software Update | Firmware (mecanismo de atualização) | **TID-211** Device Allows Unauthenticated Firmware Installation; **TID-215** Unencrypted SW/FW Updates |
+| F06 | 5.7 — garantir a integridade do software; 5.4 | Device Security; Data Protection | Interfaces físicas / Memória | **TID-115** Firmware/Data Extraction via Hardware Interface; **TID-119** Latent Hardware Debug Port Allows Memory/Code Manipulation; **TID-201** Inadequate Bootloader Protection and Verification |
 
-> As cláusulas da ETSI e as capacidades do NIST estão referenciadas pelo título da seção. Os nomes das ameaças do EMB3D são descritivos; confira os identificadores (TID) em emb3d.mitre.org antes da entrega final.
+> As cláusulas da ETSI e as capacidades do NIST estão referenciadas pelo título da seção. Identificadores do EMB3D conforme o catálogo em https://emb3d.mitre.org/threats/ (consultado em 22/11/2026).

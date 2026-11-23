@@ -2,7 +2,6 @@
 
 **Autor:** Ronald Araujo Viana — UniFECAF
 **Projeto no simulador:** https://wokwi.com/projects/481366084517581825
-**Vídeo de demonstração:** _<inserir link do YouTube (não listado)>_
 
 ## 1. Objetivo
 

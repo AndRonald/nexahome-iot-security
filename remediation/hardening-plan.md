@@ -18,7 +18,7 @@ O plano é organizado por prioridade. Medidas irreversíveis (eFuses) são **pro
 |---|---|---|---|---|
 | H6 | **Flash Encryption** em modo *release* | F03, F06 | Cifra o conteúdo da flash com chave no eFuse; despejo via `esptool` passa a sair ilegível | ETSI 5.4, NIST *Data Protection* |
 | H7 | **Secure Boot V2** (assinatura RSA-PSS) | F05, F06 | Bootloader só executa aplicações assinadas pela chave privada da NexaHome (chave mantida em HSM, nunca no repositório). Requer ESP32 revisão v3 ou superior | ETSI 5.7 |
-| H8 | **Desabilitar JTAG** e ativar o **modo download seguro** | F06 | eFuses `JTAG_DISABLE`; `CONFIG_SECURE_UART_ROM_DL_MODE` (download mode só aceita comandos limitados, sem leitura de flash) | ETSI 5.6, EMB3D (extração via interface de hardware) |
+| H8 | **Desabilitar JTAG** e ativar o **modo download seguro** | F06 | eFuses `JTAG_DISABLE`; `CONFIG_SECURE_UART_ROM_DL_MODE` (download mode só aceita comandos limitados, sem leitura de flash) | ETSI 5.6, EMB3D TID-115 / TID-119 |
 | H9 | **Processo seguro de atualização** | F05 | `esp_https_ota` com certificado fixado; imagem assinada (H7); verificação de versão (anti-rollback) | ETSI 5.3, NIST *Software Update* |
 | H10 | **Recuperação em caso de falha** de atualização | F05 | Partições OTA duplas (`ota_0`/`ota_1`) + `CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE`: se a nova imagem não se validar, volta para a anterior | ETSI 5.3 |
 
