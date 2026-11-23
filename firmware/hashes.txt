@@ -1,0 +1,10 @@
+Arquivo: nexasense-v0.9.3.bin
+Tamanho: 902000 bytes
+Origem: compilado no simulador Wokwi (projeto 481366084517581825), baixado via "Download Compiled Firmware"
+Data da análise: 2026-11-22
+SHA-256: c796e03c0dac45bcee3885db8486acdbf9f7581630bc5ed8b80ed670e1d8cf36
+
+Cópia de trabalho: firmware/work/nexasense-work.bin
+SHA-256 da cópia: c796e03c0dac45bcee3885db8486acdbf9f7581630bc5ed8b80ed670e1d8cf36 (idêntico ao original)
+
+Os arquivos .bin não são versionados (.gitignore); o original fica preservado localmente.
