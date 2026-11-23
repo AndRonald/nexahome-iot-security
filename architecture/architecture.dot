@@ -1,0 +1,34 @@
+digraph G {
+  rankdir=TB; bgcolor="white"; fontname="Helvetica";
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, fillcolor="#eef3f8", color="#4a6785"];
+  edge [fontname="Helvetica", fontsize=9, color="#4a6785"];
+  label="NexaSense — arquitetura simplificada (ambiente de laboratório Wokwi)\n[!] = superfície de ataque identificada"; labelloc=t; fontsize=14;
+
+  subgraph cluster_hw { label="Hardware (ESP32 DevKitC simulado)"; style="rounded"; color="#888888";
+    sensor [label="Sensor DHT22\n(temperatura / umidade)\nGPIO15 (1-wire)"];
+    mcu [label="MCU ESP32 (Xtensa dual-core)\nWi-Fi 2.4 GHz integrado", fillcolor="#dbe7f3"];
+    flash [label="Flash SPI externa (4 MB)\nbootloader + partições + app\n[!] sem Flash Encryption", fillcolor="#fde2e2", color="#b04545"];
+    uart [label="UART0 (GPIO1 TX / GPIO3 RX)\nvia ponte USB-serial\n[!] boot log + debug + comandos", fillcolor="#fde2e2", color="#b04545"];
+    jtag [label="JTAG (GPIO12-15)\n[!] não desabilitado", fillcolor="#fde2e2", color="#b04545"];
+  }
+  subgraph cluster_fw { label="Firmware NexaSense v0.9.3-beta (Arduino core)"; style="rounded"; color="#888888";
+    fw [label="App: leitura DHT22 + Wi-Fi + MQTT\n[!] token fixo no binário\n[!] debug imprime segredos\n[!] comandos sem autenticação", fillcolor="#fde2e2", color="#b04545"];
+    ota [label="URL OTA (HTTP)\n[!] sem TLS / sem assinatura", fillcolor="#fde2e2", color="#b04545"];
+  }
+  subgraph cluster_net { label="Rede / Serviços"; style="rounded"; color="#888888";
+    wifi [label="Wi-Fi Wokwi-GUEST\n(rede aberta de laboratório)"];
+    broker [label="Broker MQTT público\nbroker.hivemq.com:1883\n[!] sem TLS / sem autenticação", fillcolor="#fde2e2", color="#b04545"];
+    upd [label="update.nexahome.local\n(servidor de atualização — conceitual)", style="rounded,dashed"];
+    platform [label="Plataforma de monitoramento\n(assinante do tópico telemetry)"];
+  }
+  sensor -> mcu [label="leitura"];
+  mcu -> flash [dir=both, label="SPI"];
+  uart -> mcu [dir=both];
+  jtag -> mcu [dir=both];
+  flash -> fw [label="executa"];
+  fw -> ota [style=dashed];
+  fw -> wifi [label="TCP/IP"];
+  wifi -> broker [label="MQTT publish/subscribe\n.../telemetry  .../cmd"];
+  broker -> platform [label="telemetria"];
+  ota -> upd [style=dashed, label="HTTP GET"];
+}
