@@ -6,7 +6,7 @@
 #define FW_VERSION "0.9.3-beta"
 const char* WIFI_SSID = "Wokwi-GUEST";
 const char* WIFI_PASS = "";
-const char* MQTT_HOST = "test.mosquitto.org";
+const char* MQTT_HOST = "broker.hivemq.com";
 const int   MQTT_PORT = 1883;                       // sem TLS
 const char* API_TOKEN = "nxh_live_9f8e7d6c5b4a3210"; // token fixo no codigo
 const char* OTA_URL   = "http://update.nexahome.local/fw/nexasense.bin"; // HTTP, sem assinatura
